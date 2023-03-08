@@ -5,7 +5,7 @@ import Navs from './Navs';
 const MainLayout = () => {
   return (
     <div>
-      <AppTitle/>
+      <AppTitle />
       <Navs />
       <Outlet />
     </div>

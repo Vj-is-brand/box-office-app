@@ -7,7 +7,6 @@ const Home = () => {
   const [apiData, setApiData] = useState(null);
   const [apiDataError, setApiDataError] = useState(null);
 
-
   const onSearchStringChange = env => {
     setSearchStr(env.target.value);
   };
@@ -15,29 +14,28 @@ const Home = () => {
   const onSearch = async env => {
     env.preventDefault();
 
-    try{
+    try {
       setApiDataError(null);
       const result = await searchForShows(searchStr);
       setApiData(result);
-    }
-    catch(error){
+    } catch (error) {
       setApiDataError(error);
     }
   };
 
   const renderApiData = () => {
-  if(apiDataError){
-    return <div>Error occured: {apiDataError.message}</div>
-  }
+    if (apiDataError) {
+      return <div>Error occured: {apiDataError.message}</div>;
+    }
 
-    if(apiData){
-      return apiData.map((data) => (
+    if (apiData) {
+      return apiData.map(data => (
         <div key={data.show.id}>{data.show.name}</div>
       ));
     }
 
-   return null;
-  }
+    return null;
+  };
 
   return (
     <div>
@@ -49,9 +47,7 @@ const Home = () => {
         ></input>
         <button type="submit">search</button>
       </form>
-      <div>
-      {renderApiData()}
-      </div>
+      <div>{renderApiData()}</div>
     </div>
   );
 };
