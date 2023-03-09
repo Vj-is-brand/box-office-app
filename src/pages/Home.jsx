@@ -1,6 +1,8 @@
 // import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import ActorGrid from '../components/actors/ActorGrid';
 import SearchForm from '../components/SearchForm';
+import ShowGrid from '../components/shows/ShowGrid';
 import { searchForPeople, searchForShows } from './../api/tvMaze';
 
 const Home = () => {
@@ -32,13 +34,15 @@ const Home = () => {
     if (apiDataError) {
       return <div>Error occured: {apiDataError.message}</div>;
     }
+     
+    if(apiData?.length === 0 ){
+     return <div>No result found - 404</div>
+    }
 
     if (apiData) {
       return apiData[0].show
-        ? apiData.map(data => <div key={data.show.id}>{data.show.name}</div>)
-        : apiData.map(data => (
-            <div key={data.person.id}>{data.person.name}</div>
-          ));
+        ? <ShowGrid shows={apiData}/>
+        : <ActorGrid actors={apiData}/>
     }
 
     return null;
