@@ -36,7 +36,7 @@ const Home = () => {
     }
      
     if(apiData?.length === 0 ){
-     return <div>No result found - 404</div>
+     return <div>No result found</div>
     }
 
     if (apiData) {
