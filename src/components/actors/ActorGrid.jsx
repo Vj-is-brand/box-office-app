@@ -15,7 +15,7 @@ const ActorGrid = ({ actors }) => {
           birthday={data.person.birthday}
           gender={data.person.gender}
           country={data.person.country ? data.person.country.name : null }
-          deathday={data.person.deathday ? data.person.deathday : 'Active'}
+          deathday={data.person.deathday ? data.person.deathday : null}
         />
       ))}
     </div>
