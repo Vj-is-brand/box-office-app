@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { searchShowInfo } from '../api/tvMaze';
-const Show = () => {
-  const { showId } = useParams();
+
+const useShowById = (getId) => {
   const [showData, setShowData] = useState(null);
   const [showError, setShowError] = useState(null);
-  // console.log(showId);
+  // console.log(getId);
 
   useEffect(() => {
     async function fetchData() {
       // You can await here
       try {
-        const response = await searchShowInfo(showId);
+        const response = await searchShowInfo(getId);
         setShowData(response);
       } catch (error) {
         setShowError(error);
@@ -19,7 +19,14 @@ const Show = () => {
     }
 
     fetchData();
-  }, [showId]);
+  }, [getId]);
+
+  return { showData, showError};
+}
+
+const Show = () => {
+  const { showId } = useParams();
+ const {showData,showError} = useShowById(showId);
 
   if (showError) {
     return <div>you have an error. {showError.mesage()}</div>;
