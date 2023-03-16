@@ -1,11 +1,9 @@
-import {  useState } from 'react';
+import { useState } from 'react';
 import ActorGrid from '../components/actors/ActorGrid';
 import SearchForm from '../components/SearchForm';
 import ShowGrid from '../components/shows/ShowGrid';
 import { searchForPeople, searchForShows } from './../api/tvMaze';
 import { useQuery } from '@tanstack/react-query';
-
-
 
 const Home = () => {
   const [filter, setFilter] = useState(null);
@@ -48,7 +46,6 @@ const Home = () => {
     <div>
       <SearchForm onSearch={onSearch} />
       <div>{renderApiData()}</div>
-      
     </div>
   );
 };

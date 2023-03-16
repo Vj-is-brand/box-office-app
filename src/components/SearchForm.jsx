@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useSearchStr } from '../lib/useSearchStr';
+import CustomRadio from './CustomRadio';
 
-const SearchForm = ({onSearch}) => {
+const SearchForm = ({ onSearch }) => {
   const [searchStr, setSearchStr] = useSearchStr();
   const [searchOption, setSearchOption] = useState('shows');
 
@@ -9,20 +10,20 @@ const SearchForm = ({onSearch}) => {
     setSearchStr(env.target.value);
   };
 
-  const onRadioChange =  env => {
+  const onRadioChange = env => {
     setSearchOption(env.target.value);
   };
 
-  const onSubmit = (env) => {
+  const onSubmit = env => {
     env.preventDefault();
 
     const options = {
-     q:searchStr,
-     searchOption
-    }
+      q: searchStr,
+      searchOption,
+    };
 
     onSearch(options);
-  }
+  };
 
   return (
     <div>
@@ -33,27 +34,23 @@ const SearchForm = ({onSearch}) => {
           onChange={onSearchStringChange}
         ></input>
 
-        <label>
-          Shows
-          <input
-            type="radio"
-            name="search-option"
-            value="shows"
-            checked={searchOption === 'shows'}
-            onChange={onRadioChange}
-          />
-        </label>
+        <CustomRadio
+          label="shows"
+          type="radio"
+          name="search-option"
+          value="shows"
+          checked={searchOption === 'shows'}
+          onChange={onRadioChange}
+        />
 
-        <label>
-          Actor
-          <input
-            type="radio"
-            name="search-option"
-            value="actors"
-            checked={searchOption === 'actors'}
-            onChange={onRadioChange}
-          />
-        </label>
+        <CustomRadio
+          label="actors"
+          type="radio"
+          name="search-option"
+          value="actors"
+          checked={searchOption === 'actors'}
+          onChange={onRadioChange}
+        />
 
         <button type="submit">search</button>
       </form>
