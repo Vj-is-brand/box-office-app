@@ -2,6 +2,7 @@ import { useStarredShows } from '../lib/useStarred';
 import { useQuery } from '@tanstack/react-query';
 import { getShowsByIds } from '../api/tvMaze';
 import ShowGrid from '../components/shows/ShowGrid';
+import { TextCenter } from '../components/common/TextCenter';
 
 const Starred = () => {
   const [starredShowsIds] = useStarredShows();
@@ -16,7 +17,7 @@ const Starred = () => {
   });
 
   if (starredShows?.length === 0) {
-    return<div>You have no starred page</div>;
+    return<TextCenter>You have no starred page</TextCenter>;
   }
 
   if (starredShows?.length > 0) {
@@ -27,7 +28,7 @@ const Starred = () => {
     return<ShowGrid shows={starredShowsError.message} />;
   }
 
-  return <div>Starred pages {starredShowsIds.length}</div>;
+  return <TextCenter>Starred pages {starredShowsIds.length}</TextCenter>;
 };
 
 export default Starred;
