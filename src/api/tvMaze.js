@@ -4,7 +4,7 @@ const apiGet = async queryString => {
   //    throw new Error('bad request');
   const response = await fetch(`${BASE_URL}${queryString}`);
   const body = await response.json();
-  console.log(body);
+  // console.log(body);
 
   return body;
 };

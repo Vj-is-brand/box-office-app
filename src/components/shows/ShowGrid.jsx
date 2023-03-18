@@ -5,7 +5,7 @@ import { FlexGrid} from '../common/FlexGrid';
 
 const ShowGrid = ({ shows }) => {
   const [starredShows, dispatchStarred] = useStarredShows();
-  console.log({ starredShows });
+  // console.log({ starredShows });
 
   const onStarMeClick = showId => {
     const isStarred = starredShows.includes(showId);
