@@ -1,5 +1,7 @@
+
 import styled from 'styled-components';
 import { StarIcon } from '../common/StarIcon';
+import notFoundImage from '../../lib/no-image-found.png';
 
 const ShowMainData = props => {
   const { image, name, rating, summary, genres } = props;
@@ -7,7 +9,7 @@ const ShowMainData = props => {
     <MainDataWrapper>
       <div className="img-wrap">
         <img
-          src={image ? image.medium : '/no-image-found.png'}
+          src={image ? image.medium : notFoundImage}
           alt={name}
         ></img>
       </div>
